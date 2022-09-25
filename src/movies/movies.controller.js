@@ -22,12 +22,12 @@ async function read(req, res, next) {
 
 async function theaterList(req, res, next) {
   const { movieId } = req.params;
-  res.json({ data: await service.reviewList(movieId)})
+  res.json({ data: await service.theaterList(movieId)})
 }
 
 
 module.exports = {
   list: asyncErrorBoundary(list),
   read: [asyncErrorBoundary(movieExsists), read],
-  theaterList: asyncErrorBoundary(theaterLIst),
+  theaterList: asyncErrorBoundary(theaterList),
 }
