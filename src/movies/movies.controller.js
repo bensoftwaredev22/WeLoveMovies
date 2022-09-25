@@ -6,7 +6,23 @@ async function list(req, res, next) {
   res.json({ data });
 }
 
+async function movieExsists(req, res, next) {
+  const movie = await service.read(req.params.movieId)
+  if (movie) {
+    res.locals.movie = movie;
+    return next();
+  }
+  return ({ status: 404, message: 'Moive not found' })
+}
+
+async function read(req, res, next) {
+  const {movie: data} = res.locals;
+  res.json({ data });
+}
+
 
 module.exports = {
   list: asyncErrorBoundary(list),
+  read: [asyncErrorBoundary(movieExsists), read],
+  
 }
