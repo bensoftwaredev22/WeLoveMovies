@@ -1,4 +1,5 @@
 const knex = require("../db/connection");
+const addCritic = require("../utils/addCirtic");
 
 function list(isShowing) {
   if (isShowing === 'true') {
