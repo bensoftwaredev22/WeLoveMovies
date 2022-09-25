@@ -1,5 +1,6 @@
 const service = require("./movies.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
+const { as } = require("../db/connection");
 
 async function list(req, res, next) {
   const data = await service.list(req.query.is_showing);
@@ -25,9 +26,15 @@ async function theaterList(req, res, next) {
   res.json({ data: await service.theaterList(movieId)})
 }
 
+async function reviewList(req, res, next) {
+  const { movieId } = req.params;
+  res.json({ data: await service.reviewList(movieId) });
+}
+
 
 module.exports = {
   list: asyncErrorBoundary(list),
   read: [asyncErrorBoundary(movieExsists), read],
   theaterList: asyncErrorBoundary(theaterList),
+  reviewList: asyncErrorBoundary(reviewList),
 }
