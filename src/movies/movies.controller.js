@@ -13,7 +13,7 @@ async function movieExsists(req, res, next) {
     res.locals.movie = movie;
     return next();
   }
-  return ({ status: 404, message: 'Moive cannot be found' })
+  next({status: 404, message: 'Moive cannot be found'});
 }
 
 async function read(req, res, next) {

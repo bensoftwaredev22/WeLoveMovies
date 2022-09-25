@@ -37,9 +37,24 @@ function read(movieId) {
     .first();
 }
 
+function reviewList(movieId) {
+  return knex('reviews as r')
+    .join('critics as c', 'r.critic_id', 'c.critic_id')
+    .where({ 'r.movie_id': movieId })
+    .select(
+      'r.*',
+      'c.critic_id as critic.critic_id',
+      'c.preferred_name as critic.preferred_name',
+      'c.surname as critic.surname',
+      'c.organization_name as critic.organization_name'      
+    )
+    .then(addCritic);
+}
+
 
 module.exports = {
   list,
   read,
   theaterList,
+  reviewList,
 };
