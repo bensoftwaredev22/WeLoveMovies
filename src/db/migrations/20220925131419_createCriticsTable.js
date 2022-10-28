@@ -10,3 +10,5 @@ exports.up = function(knex) {
 exports.down = function(knex) {
     return knex.schema.dropTable('critics');  
 };
+
+//The critics table represents movie critics who have created reviews for movies. Each critic has the following fields:

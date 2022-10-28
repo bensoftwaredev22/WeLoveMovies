@@ -22,3 +22,6 @@ exports.up = function(knex) {
 exports.down = function(knex) {
     return knex.schema.dropTable('reviews');
 };
+
+
+//The reviews table represents a review done by a critic of a single movie. It references both a critic and a movie.

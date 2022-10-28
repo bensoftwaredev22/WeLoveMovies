@@ -19,3 +19,8 @@ exports.up = function(knex) {
 exports.down = function(knex) {
     return knex.schema.dropTable('movies_theaters');
 };
+
+
+// The movies_theaters table is a join table that connects movies with theaters.
+// It represents which movies are being shown in which theaters.
+// It also includes a key that represents whether or not a movie is currently showing at the theater, or if it has in the past.

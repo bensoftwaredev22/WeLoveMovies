@@ -15,3 +15,6 @@ exports.up = function(knex) {
 exports.down = function(knex) {
     return knex.schema.dropTable('theaters');
 };
+
+
+//The theaters table represents movie theaters. Each theater has the following fields:

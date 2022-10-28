@@ -13,3 +13,6 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   return knex.schema.dropTable('movies');
 };
+
+
+//The movies table represents movies stored in the application database. Each movie has the following fields:
